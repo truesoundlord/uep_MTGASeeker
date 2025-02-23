@@ -1,0 +1,18 @@
+[package]
+name = "uep_MTGASeeker"
+version = "0.1.0"
+edition = "2024"
+
+authors = ["Hurukan"]
+
+[dependencies]
+dotenvy = "0.15.7"
+text-colorizer = "1.0.0"
+rustc_version_runtime = "0.3.0"
+regex = { version = "1.10.5" }
+
+[[bin]]
+name = "uep_MTGASeeker"
+path = "src/uep_MTGASeeker.rs"
+
+
