@@ -2,7 +2,6 @@
 #![allow(unused_assignments)]
 
 use std::env::Args;
-use text_colorizer::Colorize;
 use crate::BrowseFile::BrowseFile;
 
 pub fn Launch(parametre :Args, OSType :bool)
@@ -13,16 +12,13 @@ pub fn Launch(parametre :Args, OSType :bool)
 	
 	let vecteuralacon: Vec<_> = parametre.skip(1).collect();
 	let path = vecteuralacon.first().unwrap();
-	println!("{}",path);
 	
 	if OSType
 	{
-		println!("[DEBUG] WinCaca");
 		separator='\\';
 	}
 	else 
 	{  
-		println!("[DEBUG] Linux");
 		separator='/';
 	}
 	
@@ -39,10 +35,7 @@ pub fn Launch(parametre :Args, OSType :bool)
 				(filepath,filename) = path.split_at(delimiter.unwrap()+1); 
 			}
 	}
-	println!("{} <-> {}",filepath.italic(),filename.bright_white().bold());
 	let grosfilsdepute = vecteuralacon.last().unwrap();
-	println!("{}",grosfilsdepute.italic().bold());
-	
 	BrowseFile(path,grosfilsdepute);
 }
 

@@ -53,6 +53,7 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 		None => 
 			{
 				println!("[{}] not found :{{",param_filsdepute);
+				return;
 			}
 		Some(_) => 
 			{
@@ -64,9 +65,6 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 	// Récupérer le nombre de poutrages
 	
 	let (mut tuple_caca,mut bon) = Buffer.split_at(positionDebut.unwrap());
-	
-	// println!("[DEBUG]\n{}-----\n",bon);
-
 	let mut position;
 	loop
 	{
@@ -84,7 +82,7 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 	let str_nbcommentaires=couillonade.trim_end();
 	
 	let mut nbCommentaires = u32::from_str_radix(str_nbcommentaires,10).unwrap_or(0); 
-	println!("\t {} comments...",nbCommentaires);
+	println!("\t {} comment(s)...",nbCommentaires);
 	
 	bon="";
 	position = str_commentaires.find("\n").unwrap_or(0);
