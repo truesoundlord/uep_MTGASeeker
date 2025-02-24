@@ -32,6 +32,6 @@ pub fn Launch(parametre :Args, OSType :bool)
 	let grosfilsdepute = vecteuralacon.last().unwrap();
 	println!("{}",grosfilsdepute.italic().bold());
 	
-	BrowseFile(filepath,filename,grosfilsdepute);
+	BrowseFile(path,grosfilsdepute);
 }
 
