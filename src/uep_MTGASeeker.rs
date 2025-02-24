@@ -20,8 +20,6 @@ const AUTHOR :&str = env!("CARGO_PKG_AUTHORS");
 fn main()
 {
 	let mut bOSType = false;
-
-
 	println!("{} (version {} {YEARS} by {}) RUST {}", NAME.bright_cyan().bold(),VERSION.bold(),AUTHOR.bold(),rustc_version_runtime::version().to_string().bold());
 	if cfg!(windows)
 	{
@@ -32,7 +30,6 @@ fn main()
 	{
 		println!("{}",String::from("Unix alike detected !!").italic());
 	}
-	println!("{}",env::consts::OS.to_uppercase().blue().bold());
 
 	let Parametres = env::args();
 	if Parametres.len() == 3

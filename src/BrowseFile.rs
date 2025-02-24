@@ -14,7 +14,6 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 	let mut Buffer = String::new();
 	let mut uncommentaire;
 	
-	
 	let lefichier = fs::File::open(param_target);
 	match lefichier
 	{
@@ -29,8 +28,7 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 			}
 	}
 	println!("Seeking for {}...",param_filsdepute);
-	
-	
+		
 	let result = lefichier.unwrap().read_to_string(&mut Buffer);
 	match result
 	{
@@ -46,7 +44,6 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 	}
 	
 	let thispattern = format!("[{}]",param_filsdepute); 
-	
 	let positionDebut = Buffer.rfind(thispattern.as_str());
 	match positionDebut 
 	{
