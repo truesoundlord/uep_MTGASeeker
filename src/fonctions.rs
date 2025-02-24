@@ -9,13 +9,24 @@ pub fn Launch(parametre :Args, OSType :bool)
 {
 	let filepath;
 	let filename;
-	
+	let separator;
 	
 	let vecteuralacon: Vec<_> = parametre.skip(1).collect();
 	let path = vecteuralacon.first().unwrap();
 	println!("{}",path);
 	
-	let delimiter = path.rfind('/');
+	if OSType
+	{
+		println!("[DEBUG] WinCaca");
+		separator='\\';
+	}
+	else 
+	{  
+		println!("[DEBUG] Linux");
+		separator='/';
+	}
+	
+	let delimiter = path.rfind(separator);
 	match delimiter 
 	{
 		None => 
