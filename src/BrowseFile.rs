@@ -12,7 +12,7 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 {
 	let mut bTrouve = false;
 	let mut Buffer = String::new();
-	let mut uncommentaire;
+	let mut uncommentaire= "";
 	
 	let lefichier = fs::File::open(param_target);
 	match lefichier
