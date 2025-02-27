@@ -8,6 +8,7 @@ authors = ["Hurukan"]
 [dependencies]
 text-colorizer = "1.0.0"
 rustc_version_runtime = "0.3.0"
+lazy_static = "1.5.0"
 
 [[bin]]
 name = "uep_MTGASeeker"

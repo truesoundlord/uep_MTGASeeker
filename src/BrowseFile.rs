@@ -5,15 +5,14 @@ use std::process::exit;
 use std::fs;
 use std::io::Read;
 use text_colorizer::{ColoredString, Colorize};
-
-use crate::statics::{PATTERN, PTTRN_CMNT};
+use crate::statics::{ILLEGALCHARS, PATTERN, PTTRN_CMNT};
 
 pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 {
 	let mut bTrouve = false;
 	let mut Buffer = String::new();
 	let mut uncommentaire= "";
-	
+
 	let lefichier = fs::File::open(param_target);
 	match lefichier
 	{
@@ -27,7 +26,7 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 				exit(-2);
 			}
 	}
-	println!("Seeking for {}...",param_filsdepute);
+	
 		
 	let result = lefichier.unwrap().read_to_string(&mut Buffer);
 	match result
@@ -42,19 +41,31 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 				exit(-3);
 			}
 	}
-	
-	let thispattern = format!("[{}]",param_filsdepute); 
-	let positionDebut = Buffer.rfind(thispattern.as_str());
+
+	let mut thispattern= format!("[{}]",param_filsdepute);
+
+	for element in ILLEGALCHARS.clone().into_iter()
+	{
+		if param_filsdepute.contains(element.0)
+		{
+			thispattern = param_filsdepute.replace(element.0,element.1);
+			break;
+		}
+	}
+
+	println!("\tseeking for {}...",thispattern.bold());
+
+	let positionDebut = Buffer.rfind(&thispattern);
 	match positionDebut 
 	{
 		None => 
 			{
-				println!("[{}] not found :{{",param_filsdepute);
+				println!("[{}] not found :{{",thispattern);
 				return;
 			}
 		Some(_) => 
 			{
-				println!("\t [{}] found !!!",ColoredString::from(param_filsdepute).italic().bold());
+				println!("\t [{}] found !!!",ColoredString::from(thispattern.to_string()).bold());
 			}
 	}
 	
