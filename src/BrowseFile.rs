@@ -60,12 +60,12 @@ pub fn BrowseFile(param_target :&str, param_filsdepute :&str)
 	{
 		None => 
 			{
-				println!("[{}] not found :{{",thispattern);
+				println!("{} not found :{{",thispattern);
 				return;
 			}
 		Some(_) => 
 			{
-				println!("\t [{}] found !!!",ColoredString::from(thispattern.to_string()).bold());
+				println!("\t {} found !!!",ColoredString::from(thispattern.to_string()).bold());
 			}
 	}
 	
